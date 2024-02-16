@@ -17,8 +17,9 @@ const Login = () => {
         <input type="text" placeholder="username" onChange={handleUsername} id="username" />
         {username.length < 4 ? <p style={{color:'red'}}>username must have at least four characters</p> : <mark>done!</mark>}
         <input type="number" placeholder="age" onChange={handleAge} />
-        {age < 12 ? <p>you must at least have 12 years old</p> : <mark>done!</mark>}
-        {age > 100 ? <p>please enter correct age!</p> : <mark style={{color:'green'}}>correct!</mark>}
+        {!age ? <p style={{color:'red'}}>please fill the age field</p> : null}
+        <p style={{color:'red'}}>{age < 12 ? <span>your age at least must be 12 years old</span> : null}</p>
+        <p style={{color:'red'}}>{ age > 100 ? <span>please enter a correct age!</span> : null}</p>
         <input type="password" placeholder="password" />
         <input type="password" placeholder="confirm password" />
         <input type="submit" value='Log in' className="submit"/>
