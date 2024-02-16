@@ -3,6 +3,9 @@ const Login = () => {
 
   const [username, setUsername] = useState("");
   const [age, setAge] = useState();
+  const [password, setPassword] = useState([]);
+  const [confirmPassword, setConfirmPassword] = useState([]);
+
   const handleUsername = (e) => {
     // console.log(document)
     setUsername(e.target.value);
@@ -10,6 +13,13 @@ const Login = () => {
   }
   const handleAge = (e) => {
     setAge(e.target.value)
+  }
+  const handlePassword = (e) => {
+    setPassword(e.target.value);
+    // console.log(e)
+  }
+  const handleConfirmPassword = (e) => {
+    setConfirmPassword(e.target.value);
   }
   return (
     <>
@@ -20,8 +30,11 @@ const Login = () => {
         {!age ? <p style={{color:'red'}}>please fill the age field</p> : null}
         <p style={{color:'red'}}>{age < 12 ? <span>your age at least must be 12 years old</span> : null}</p>
         <p style={{color:'red'}}>{ age > 100 ? <span>please enter a correct age!</span> : null}</p>
-        <input type="password" placeholder="password" />
-        <input type="password" placeholder="confirm password" />
+        <input type="password" placeholder="password" onChange={handlePassword} />
+        {password.length < 6 ? <p style={{color:'red'}}>password must has at least 6 characters</p> : <mark>done!</mark>}
+        <input type="password" placeholder="confirm password" onChange={handleConfirmPassword} />
+        {confirmPassword !== password ? <p style={{ color: 'red' }}>please enter a correct password</p> : <mark>done!</mark>}
+        <input type="email" placeholder="email"/>
         <input type="submit" value='Log in' className="submit"/>
       </form>
 
