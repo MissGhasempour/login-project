@@ -5,7 +5,7 @@ const Login = () => {
   const [age, setAge] = useState();
   const [password, setPassword] = useState([]);
   const [confirmPassword, setConfirmPassword] = useState([]);
-
+  const [email, setEmail] = useState();
   const handleUsername = (e) => {
     // console.log(document)
     setUsername(e.target.value);
@@ -21,6 +21,7 @@ const Login = () => {
   const handleConfirmPassword = (e) => {
     setConfirmPassword(e.target.value);
   }
+  const handleEmail = () => {}
   return (
     <>
       <form>
@@ -34,7 +35,7 @@ const Login = () => {
         {password.length < 6 ? <p style={{color:'red'}}>password must has at least 6 characters</p> : <mark>done!</mark>}
         <input type="password" placeholder="confirm password" onChange={handleConfirmPassword} />
         {confirmPassword !== password ? <p style={{ color: 'red' }}>please enter a correct password</p> : <mark>done!</mark>}
-        <input type="email" placeholder="email"/>
+        <input type="email" placeholder="email" onChange={handleEmail}/>
         <input type="submit" value='Log in' className="submit"/>
       </form>
 
