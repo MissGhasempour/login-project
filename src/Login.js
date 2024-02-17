@@ -1,4 +1,9 @@
 import { useState } from "react";
+import FormData from "./FormData";
+
+// let username = "";
+// let setUsername = function (username) { return username };
+// export const input = <input type="text"/>
 const Login = () => {
 
   const [username, setUsername] = useState("");
@@ -25,8 +30,16 @@ const Login = () => {
   const handleEmail = (e) => {
     setEmail(e.target.value);
   }
+  const handleClick = () => {
+    setUsername("");
+    setAge();
+    setPassword([]);
+    setConfirmPassword([]);
+    setEmail("")
+  }
   return (
     <>
+      <h1 style={{textAlign:"center", color:"grey"}}>Log in page</h1>
       <form action="">
         <input type="text" placeholder="username" onChange={handleUsername} id="username" />
         {username.length < 4 ? <p style={{color:'red'}}>username must has at least four characters</p> : <mark>done!</mark>}
@@ -40,9 +53,10 @@ const Login = () => {
         {confirmPassword !== password ? <p style={{ color: 'red' }}>please enter a correct password</p> : <mark>done!</mark>}
         <input type="text" placeholder="email" onChange={handleEmail} />
         {(email.includes('@') && email.includes('.com') && email.length > 10) ? <p>valid email</p> : <p style={{color:'red'}}>please enter a valid email</p>}
-        <input type="submit" value='Log in' className="submit"/>
+        <input type="submit" value='Log in' className="submit" onClick={() => handleClick()} />
       </form>
 
+      {/* <FormData username={username } /> */}
     </>
   )
 }
