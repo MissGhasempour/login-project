@@ -27,9 +27,9 @@ const Login = () => {
   }
   return (
     <>
-      <form>
+      <form action="">
         <input type="text" placeholder="username" onChange={handleUsername} id="username" />
-        {username.length < 4 ? <p style={{color:'red'}}>username must have at least four characters</p> : <mark>done!</mark>}
+        {username.length < 4 ? <p style={{color:'red'}}>username must has at least four characters</p> : <mark>done!</mark>}
         <input type="number" placeholder="age" onChange={handleAge} />
         {!age ? <p style={{color:'red'}}>please fill the age field</p> : null}
         <p style={{color:'red'}}>{age < 12 ? <span>your age at least must be 12 years old</span> : null}</p>
@@ -39,7 +39,7 @@ const Login = () => {
         <input type="password" placeholder="confirm password" onChange={handleConfirmPassword} />
         {confirmPassword !== password ? <p style={{ color: 'red' }}>please enter a correct password</p> : <mark>done!</mark>}
         <input type="text" placeholder="email" onChange={handleEmail} />
-        {(email.includes('@') && email.includes('.com') && email.length > 10) ? <p>valid email</p> : <p>please enter a correct email</p>}
+        {(email.includes('@') && email.includes('.com') && email.length > 10) ? <p>valid email</p> : <p style={{color:'red'}}>please enter a valid email</p>}
         <input type="submit" value='Log in' className="submit"/>
       </form>
 
