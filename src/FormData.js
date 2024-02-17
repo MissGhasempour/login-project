@@ -1,3 +1,12 @@
 
-const FormData = () => { }
+const FormData = () => {
+  return (
+    <>
+    
+    
+    
+    
+    </>
+  )
+ }
 export default FormData;
