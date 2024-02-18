@@ -1,5 +1,6 @@
 import { useState } from "react";
 import FormData from "./FormData";
+// import { useHistory } from 'react-router-dom';
 
 
 // let username = "";
@@ -32,6 +33,7 @@ const Login = () => {
     setEmail(e.target.value);
   }
   // const handleClick = () => {
+  
   //   setUsername("");
   //   setAge();
   //   setPassword([]);
@@ -39,11 +41,13 @@ const Login = () => {
   //   setEmail("")
   // }
 
+  // const history = useHistory();
+  // history.push('/data', { username });
  
   return (
     <>
       <h1 style={{textAlign:"center", color:"grey"}}>Log in page</h1>
-      <form action="/data" id="form" method="post">
+      <form action={`/data/${username}`} id="form" method="get">
         <input type="text" placeholder="username" onChange={handleUsername} id="username" />
         {username.length < 4 ? <p style={{color:'red'}}>username must has at least four characters</p> : <mark>done!</mark>}
         <input type="number" placeholder="age" onChange={handleAge} />
