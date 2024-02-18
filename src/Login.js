@@ -1,16 +1,17 @@
 import { useState } from "react";
 import FormData from "./FormData";
 
+
 // let username = "";
 // let setUsername = function (username) { return username };
 // export const input = <input type="text"/>
 const Login = () => {
 
-  const [username, setUsername] = useState("");
-  const [age, setAge] = useState();
-  const [password, setPassword] = useState([]);
-  const [confirmPassword, setConfirmPassword] = useState([]);
-  const [email, setEmail] = useState("");
+  let [username, setUsername] = useState("");
+  let [age, setAge] = useState();
+  let [password, setPassword] = useState([]);
+  let [confirmPassword, setConfirmPassword] = useState([]);
+  let [email, setEmail] = useState("");
 
   const handleUsername = (e) => {
     // console.log(document)
@@ -30,17 +31,19 @@ const Login = () => {
   const handleEmail = (e) => {
     setEmail(e.target.value);
   }
-  const handleClick = () => {
-    setUsername("");
-    setAge();
-    setPassword([]);
-    setConfirmPassword([]);
-    setEmail("")
-  }
+  // const handleClick = () => {
+  //   setUsername("");
+  //   setAge();
+  //   setPassword([]);
+  //   setConfirmPassword([]);
+  //   setEmail("")
+  // }
+
+ 
   return (
     <>
       <h1 style={{textAlign:"center", color:"grey"}}>Log in page</h1>
-      <form action="">
+      <form action="/data" id="form" method="post">
         <input type="text" placeholder="username" onChange={handleUsername} id="username" />
         {username.length < 4 ? <p style={{color:'red'}}>username must has at least four characters</p> : <mark>done!</mark>}
         <input type="number" placeholder="age" onChange={handleAge} />
@@ -52,10 +55,12 @@ const Login = () => {
         <input type="password" placeholder="confirm password" onChange={handleConfirmPassword} />
         {confirmPassword !== password ? <p style={{ color: 'red' }}>please enter a correct password</p> : <mark>done!</mark>}
         <input type="text" placeholder="email" onChange={handleEmail} />
-        {(email.includes('@') && email.includes('.com') && email.length > 10) ? <p>valid email</p> : <p style={{color:'red'}}>please enter a valid email</p>}
-        <input type="submit" value='Log in' className="submit" onClick={() => handleClick()} />
+        {(email.includes('@') && email.toLowerCase().includes('.com') && email.length > 10) ? <p>valid email</p> : <p style={{color:'red'}}>please enter a valid email</p>}
+        {(username.length >= 4 && age && age > 11 && password.length > 5 && password == confirmPassword && email.includes('@') && email.includes('.com') && email.length > 10) ? <input type="submit" value='Log in' className="submit" id="submit" /> : null}
+        
       </form>
-
+     
+    
       {/* <FormData username={username } /> */}
     </>
   )
