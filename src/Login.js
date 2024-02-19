@@ -1,19 +1,20 @@
 import { useState } from "react";
 import FormData from "./FormData";
+import {Link, useNavigate } from "react-router-dom";
 // import { useHistory } from 'react-router-dom';
 
 
 // let username = "";
 // let setUsername = function (username) { return username };
 // export const input = <input type="text"/>
-const Login = () => {
+const Login = (props) => {
 
   let [username, setUsername] = useState("");
   let [age, setAge] = useState();
   let [password, setPassword] = useState([]);
   let [confirmPassword, setConfirmPassword] = useState([]);
   let [email, setEmail] = useState("");
-
+  let navigate = useNavigate();
   const handleUsername = (e) => {
     // console.log(document)
     setUsername(e.target.value);
@@ -60,7 +61,7 @@ const Login = () => {
         {confirmPassword !== password ? <p style={{ color: 'red' }}>please enter a correct password</p> : <mark>done!</mark>}
         <input type="text" placeholder="email" onChange={handleEmail} />
         {(email.includes('@') && email.toLowerCase().includes('.com') && email.length > 10) ? <p>valid email</p> : <p style={{color:'red'}}>please enter a valid email</p>}
-        {(username.length >= 4 && age && age > 11 && password.length > 5 && password == confirmPassword && email.includes('@') && email.includes('.com') && email.length > 10) ? <input type="submit" value='Log in' className="submit" id="submit" /> : null}
+        {(username.length >= 4 && age && age > 11 && password.length > 5 && password == confirmPassword && email.includes('@') && email.includes('.com') && email.length > 10) ? <input type="submit" value='Log in' className="submit" id="submit" onClick={() => navigate('/data', {state:{id:1,name:'sabaoon', username,age,email,password}})}/> : null}
         
       </form>
      
@@ -70,3 +71,4 @@ const Login = () => {
   )
 }
 export default Login;
+
