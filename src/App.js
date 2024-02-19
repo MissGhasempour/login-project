@@ -12,7 +12,7 @@ function App() {
             <Login /> 
             </>} />
           <Route path='/data' element={<FormData />} />
-          <Route path="*" element={<FormData />} />
+          <Route path="*" element={<h1>page not found</h1>} />
           </Routes>
         </Router>
     </div>

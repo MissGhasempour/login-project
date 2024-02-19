@@ -1,5 +1,4 @@
-import { useState } from "react";
-// import { input } from "./Login";
+
 import { useLocation } from "react-router-dom";
 
 const FormData = () => {
