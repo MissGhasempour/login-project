@@ -1,13 +1,12 @@
 import { useState } from "react";
-import FormData from "./FormData";
-import {Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // import { useHistory } from 'react-router-dom';
 
 
 // let username = "";
 // let setUsername = function (username) { return username };
 // export const input = <input type="text"/>
-const Login = (props) => {
+const Login = () => {
 
   let [username, setUsername] = useState("");
   let [age, setAge] = useState();
@@ -44,23 +43,34 @@ const Login = (props) => {
 
   // const history = useHistory();
   // history.push('/data', { username });
+
+
  
   return (
     <>
-      <h1 style={{textAlign:"center", color:"grey"}}>Log in page</h1>
+      <h1 className="title">Log in page</h1>
       <form action={`/data/${username}`} id="form" method="get">
+
         <input type="text" placeholder="username" onChange={handleUsername} id="username" />
-        {username.length < 4 ? <p style={{color:'red'}}>username must has at least four characters</p> : <mark>done!</mark>}
+        
+        {username.length < 4 ? <p className="message-color">username must has at least four characters</p> : <mark>done!</mark>}
+        
         <input type="number" placeholder="age" onChange={handleAge} />
-        {!age ? <p style={{color:'red'}}>please fill the age field</p> : null}
-        <p style={{color:'red'}}>{age < 12 ? <span>your age at least must be 12 years old</span> : null}</p>
-        <p style={{color:'red'}}>{ age > 100 ? <span>please enter a correct age!</span> : null}</p>
+
+        <p className="message-color">{age < 12 || age > 100  || !age? <span>your age at least must be 12 years old please enter a correct age!</span> : <mark>done!</mark>}</p>
+        
         <input type="password" placeholder="password" onChange={handlePassword} />
-        {password.length < 6 ? <p style={{color:'red'}}>password must has at least 6 characters</p> : <mark>done!</mark>}
+
+        {password.length < 6 ? <p className="message-color">password must has at least 6 characters</p> : <mark>done!</mark>}
+        
         <input type="password" placeholder="confirm password" onChange={handleConfirmPassword} />
-        {confirmPassword !== password ? <p style={{ color: 'red' }}>please enter a correct password</p> : <mark>done!</mark>}
+
+        {confirmPassword !== password ? <p className="message-color">please enter a correct password</p> : <mark>done!</mark>}
+
         <input type="text" placeholder="email" onChange={handleEmail} />
-        {(email.includes('@') && email.toLowerCase().includes('.com') && email.length > 10) ? <p>valid email</p> : <p style={{color:'red'}}>please enter a valid email</p>}
+
+        {(email.includes('@') && email.toLowerCase().includes('.com') && email.length > 10) ? <p>valid email</p> : <p className="message-color">please enter a valid email</p>}
+        
         {(username.length >= 4 && age && age > 11 && password.length > 5 && password == confirmPassword && email.includes('@') && email.includes('.com') && email.length > 10) ? <input type="submit" value='Log in' className="submit" id="submit" onClick={() => navigate('/data', {state:{id:1,name:'sabaoon', username,age,email,password}})}/> : null}
         
       </form>
