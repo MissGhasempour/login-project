@@ -1,10 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { useHistory } from 'react-router-dom';
 
-// let username = "";
-// let setUsername = function (username) { return username };
-// export const input = <input type="text"/>
 const Login = () => {
   let [username, setUsername] = useState("");
   let [age, setAge] = useState();
@@ -15,7 +11,6 @@ const Login = () => {
   const handleUsername = (e) => {
     // console.log(document)
     setUsername(e.target.value);
-    // return value.length < 4 ? <p style={{color:'red'}}>username must have at least four characters</p> : <mark>done!</mark>
   };
   const handleAge = (e) => {
     setAge(e.target.value);
@@ -30,17 +25,7 @@ const Login = () => {
   const handleEmail = (e) => {
     setEmail(e.target.value);
   };
-  // const handleClick = () => {
 
-  //   setUsername("");
-  //   setAge();
-  //   setPassword([]);
-  //   setConfirmPassword([]);
-  //   setEmail("")
-  // }
-
-  // const history = useHistory();
-  // history.push('/data', { username });
 
   return (
     <>
@@ -137,8 +122,6 @@ const Login = () => {
           />
         ) : null}
       </form>
-
-      {/* <FormData username={username } /> */}
     </>
   );
 };
